@@ -63,6 +63,7 @@ spec:
     - realtek-firmware
     - revpi-firmware
     - rockchip-rknn
+    - slingshot-drivers
     - spin
     - stargz-snapshotter
     - tailscale

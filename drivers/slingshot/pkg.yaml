@@ -1,0 +1,20 @@
+name: slingshot-drivers
+variant: scratch
+shell: /bin/bash
+dependencies:
+  - stage: base
+  - image: "{{ .BUILD_ARG_PKGS_PREFIX }}/slingshot-driver-pkg:{{ .BUILD_ARG_PKGS }}"
+  - image: "{{ .BUILD_ARG_PKGS_PREFIX }}/slingshot-firmware-pkg:{{ .BUILD_ARG_PKGS }}"
+steps:
+  - install:
+      - |
+        mkdir -p /rootfs/usr/lib/{modules,firmware}
+        cp -R /usr/lib/modules/* /rootfs/usr/lib/modules/
+        cp -R /usr/lib/firmware/* /rootfs/usr/lib/firmware/
+  - test:
+      - |
+finalize:
+  - from: /rootfs
+    to: /rootfs
+  - from: /pkg/manifest.yaml  # make sure you add the metadata file
+    to: /

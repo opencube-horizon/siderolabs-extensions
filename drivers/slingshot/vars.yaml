@@ -1,0 +1,2 @@
+VERSION: "{{ .SLINGSHOT_VERSION }}-{{ .BUILD_ARG_TAG }}"
+TIER: "extra"
