@@ -8,9 +8,11 @@ dependencies:
 steps:
   - install:
       - |
-        mkdir -p /rootfs/usr/lib/{modules,firmware}
+        mkdir -p /rootfs/usr/lib/{modules,firmware,udev/rules.d}
         cp -R /usr/lib/modules/* /rootfs/usr/lib/modules/
         cp -R /usr/lib/firmware/* /rootfs/usr/lib/firmware/
+        cp -R /usr/lib/udev/rules.d/* /rootfs/usr/lib/udev/rules.d/
+        cp /usr/lib/udev/cxi-hsn-rename /rootfs/usr/lib/udev/
   - test:
       - |
 finalize:
